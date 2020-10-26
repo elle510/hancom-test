@@ -27,6 +27,8 @@ const List = (props) => {
     }, []);
 
     const handleSubmit = useCallback(() => {
+        // https://console.developers.google.com/apis
+        // https://developers.google.com/youtube/v3/docs/search
         api.search(word);
     }, [word]);
 
