@@ -8,6 +8,8 @@ import React, {
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
+import { Slider } from 'commons/components';
+
 import RouteWithSubRoutes from '../routes/RouteWithSubRoutes';
 import * as api from '../api';
 
@@ -57,6 +59,7 @@ const List = (props) => {
                     검색
                 </button>
                 <Link to="/list/player">Player</Link>
+                <Slider items={[]} />
                 {routes.map((route) => (
                     <RouteWithSubRoutes key={uuidv4()} {...route} />
                 ))}
