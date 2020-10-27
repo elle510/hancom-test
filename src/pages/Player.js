@@ -3,7 +3,7 @@ import React, {
     // useState,
     useEffect,
     // useMemo,
-    // useCallback,
+    useCallback,
     useRef,
 } from 'react';
 import { useParams /* , useLocation */ } from 'react-router-dom';
@@ -80,8 +80,15 @@ const Player = () => {
         }
     }, [videoId]);
 
+    const handleSize = useCallback(() => {
+        player.current.setSize(640, 360);
+    },[]);
+
     return (
-        <div id="player" />
+        <div style={{ marginTop: '5px' }}>
+            <div id="player" />
+            <button type="button" style={{ marginLeft: '5px' }} onClick={handleSize}>기본크기</button>
+        </div>
     );
 }
 
