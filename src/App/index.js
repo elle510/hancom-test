@@ -29,6 +29,11 @@ class App extends Component {
                         path="/"
                         render={() => <Redirect to="/list" />}
                     />
+                    <Route
+                        exact
+                        path="/list/:videoId"
+                        render={() => <Redirect to="/list" />}
+                    />
                     <MainRoute />
                 </Switch>
             </Router>

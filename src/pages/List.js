@@ -5,7 +5,7 @@ import React, {
     useCallback,
     // useRef,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Slider } from 'commons/components';
@@ -15,7 +15,9 @@ import * as api from '../api';
 
 const List = (props) => {
     const { routes } = props;
+    // console.log('routes', routes);
     const [word, setWord] = useState('');
+    const [searchItems, setSearchItems] = useState([]);
 
     // useEffect(() => {
     //     console.log('props', props);
@@ -29,7 +31,14 @@ const List = (props) => {
     const handleSubmit = useCallback(() => {
         // https://console.developers.google.com/apis
         // https://developers.google.com/youtube/v3/docs/search
-        api.search(word);
+        api.search(word).then(response => {
+            const { items } = response;
+            // const _items = items.map(item => {
+            //     const { snippet } = item;
+            //     return snippet;
+            // });
+            setSearchItems(items);
+        }); 
     }, [word]);
 
     const handleKeyDown = useCallback(
@@ -43,30 +52,36 @@ const List = (props) => {
 
     // https://www.googleapis.com/youtube/v3/search?part=snippet&q=sports&type=video&key=AIzaSyBvQVSuIt4gEeRdpvcM6Fy1GzqYOtSBexM
     return (
-        <div className="page">
-            <div className="page-header">header</div>
-            <div
-                className="page-content"
-                // className="page-content page-has-grid" / content안 그리드 있을때 클래스
-            >
-                <label>
-                    <input
-                        type="text"
-                        value={word}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDown}
-                    />
-                </label>
-                <button type="button" onClick={handleSubmit}>
-                    검색
-                </button>
-                <Link to="/list/player">Player</Link>
-                <Slider items={[]} />
-                {routes.map((route) => (
-                    <RouteWithSubRoutes key={uuidv4()} {...route} />
-                ))}
+        <Router>
+            <div className="page">
+                <div className="page-header">
+                    <Link to="/list/yCcaWFUhROw">Player</Link>
+                </div>
+                <div
+                    className="page-content"
+                >
+                    <div>
+                        <label>
+                            <input
+                                type="text"
+                                value={word}
+                                onChange={handleChange}
+                                onKeyDown={handleKeyDown}
+                            />
+                        </label>
+                        <button type="button" onClick={handleSubmit}>
+                            검색
+                        </button>
+                    </div>
+                    <Slider items={searchItems} />
+                    <Switch>
+                        {routes.map((route) => (
+                            <RouteWithSubRoutes key={uuidv4()} {...route} />
+                        ))}
+                    </Switch>
+                </div>
             </div>
-        </div>
+        </Router>
     );
 };
 

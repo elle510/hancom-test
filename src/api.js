@@ -20,13 +20,21 @@ export const search = (word) => {
     return axios({
         // url,
         method: 'GET',
-        params: { q: word, key: 'AIzaSyBvQVSuIt4gEeRdpvcM6Fy1GzqYOtSBexM' },
+        params: { 
+            q: word,
+            part: 'snippet',
+            type: 'video',
+            maxResults: 20,
+            // key: 'AIzaSyBvQVSuIt4gEeRdpvcM6Fy1GzqYOtSBexM',
+            key: 'AIzaSyBAxPhicZ37oFmX7okaEnN8fjOIMX_0Rrc',
+        },
         // headers: { ...headers },
         // ...reqParams,
         // ...others,
     })
         .then((response) => {
-            return response;
+            // console.log('response', response);
+            return response.data;
         })
         .catch((error) => {
             // if (error.response.status === 401) {

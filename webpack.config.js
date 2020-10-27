@@ -248,18 +248,6 @@ module.exports = () => {
             publicPath: publicPath,
             transportMode: 'ws',
             injectClient: false,
-            proxy: {
-                '/rest': {
-                    target: 'https://192.168.233.118',
-                    // target: 'http://localhost:8080/cygnus-management',
-                    secure: false,
-                },
-                '/topologyicon': {
-                    target: 'https://192.168.233.118',
-                    // target: 'http://localhost:8080/cygnus-management',
-                    secure: false,
-                },
-            },
         },
     
         optimization: {
