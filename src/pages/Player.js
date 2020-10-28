@@ -133,7 +133,7 @@ const Player = () => {
 
     return (
         <div style={{ marginTop: '5px', position: 'relative' }}>
-            <div id="player" />
+            <div id="player" onLoad={() => { console.log('onLoad'); }} />
             <div 
                 id="resizer"
                 style={{
