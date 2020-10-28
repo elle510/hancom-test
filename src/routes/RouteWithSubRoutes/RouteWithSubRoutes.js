@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-// import withRoutes from './withRoutes';
-
 const RouteWithSubRoutes = (route) => {
     // console.log('RouteWithSubRoutes', route);
     const { path, exact, component, routes, ...rest } = route;
@@ -18,5 +16,4 @@ const RouteWithSubRoutes = (route) => {
     );
 };
 
-// export default withRoutes(RouteWithSubRoutes);
 export default RouteWithSubRoutes;

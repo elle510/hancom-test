@@ -5,7 +5,7 @@ import React, {
     useCallback,
     // useRef,
 } from 'react';
-import { BrowserRouter as Router, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, /* Link, */ Switch } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Slider } from 'commons/components';
@@ -54,9 +54,9 @@ const List = (props) => {
     return (
         <Router>
             <div className="page">
-                <div className="page-header">
+                {/* <div className="page-header">
                     <Link to="/list/yCcaWFUhROw">Player</Link>
-                </div>
+                </div> */}
                 <div
                     className="page-content"
                 >
